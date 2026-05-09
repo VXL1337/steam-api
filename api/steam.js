@@ -62,8 +62,6 @@ export default async function handler(req, res) {
         clean(game.about_the_game),
 
       // IMAGENS
-      banner: game.header_image,
-
       capsule_image:
         game.capsule_image,
 
