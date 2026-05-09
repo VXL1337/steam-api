@@ -54,18 +54,27 @@ export default async function handler(req, res) {
       // DESCRIÇÕES
       description: game.short_description,
       short_description: game.short_description,
+
       detailed_description:
         clean(game.detailed_description),
+
       about_the_game:
         clean(game.about_the_game),
 
       // IMAGENS
       banner: game.header_image,
-      header_image: game.header_image,
-      capsule_image: game.capsule_image,
-      capsule_imagev5: game.capsule_imagev5,
-      background: game.background,
-      background_raw: game.background_raw,
+
+      capsule_image:
+        game.capsule_image,
+
+      capsule_imagev5:
+        game.capsule_imagev5,
+
+      background:
+        game.background,
+
+      background_raw:
+        game.background_raw,
 
       // SCREENSHOTS
       screenshots: game.screenshots?.map(s => ({
@@ -96,7 +105,9 @@ export default async function handler(req, res) {
         game.categories || [],
 
       // PREÇO
-      price: game.price_overview?.final_formatted,
+      price:
+        game.price_overview?.final_formatted,
+
       discount:
         game.price_overview?.discount_percent,
 
