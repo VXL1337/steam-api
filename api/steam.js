@@ -44,16 +44,14 @@ export default async function handler(req, res) {
 
     res.status(200).json({
 
-      // BASICO
-      steam_appid: game.steam_appid,
-      type: game.type,
+      // NOME
       name: game.name,
-      required_age: game.required_age,
-      is_free: game.is_free,
 
       // DESCRIÇÕES
       description: game.short_description,
-      short_description: game.short_description,
+
+      short_description:
+        game.short_description,
 
       detailed_description:
         clean(game.detailed_description),
@@ -91,75 +89,13 @@ export default async function handler(req, res) {
         highlight: m.highlight
       })) || [],
 
-      // GENEROS
-      genres:
-        game.genres?.map(g => g.description) || [],
-
+      // GÊNEROS COMPLETOS
       genres_full:
         game.genres || [],
 
-      // CATEGORIAS
-      categories:
-        game.categories || [],
-
-      // PREÇO
-      price:
-        game.price_overview?.final_formatted,
-
-      discount:
-        game.price_overview?.discount_percent,
-
-      price_original:
-        game.price_overview?.initial_formatted,
-
+      // PREÇO COMPLETO
       price_full:
         game.price_overview || null,
-
-      // DATA
-      release_date:
-        game.release_date || null,
-
-      // EMPRESAS
-      developers:
-        game.developers || [],
-
-      publishers:
-        game.publishers || [],
-
-      // DLC
-      dlc:
-        game.dlc || [],
-
-      // IDIOMAS
-      supported_languages:
-        clean(game.supported_languages),
-
-      supported_languages_raw:
-        game.supported_languages,
-
-      // METACRITIC
-      metacritic:
-        game.metacritic || null,
-
-      // RECOMENDAÇÕES
-      recommendations:
-        game.recommendations || null,
-
-      // CONQUISTAS
-      achievements:
-        game.achievements || null,
-
-      // CONTROLE
-      controller_support:
-        game.controller_support || null,
-
-      // SITE
-      website:
-        game.website || null,
-
-      // SUPORTE
-      support_info:
-        game.support_info || null,
 
       // REQUISITOS PC
       pc_requirements: {
@@ -177,64 +113,12 @@ export default async function handler(req, res) {
           clean(game.pc_requirements?.recommended)
       },
 
-      // REQUISITOS MAC
-      mac_requirements: {
-
-        minimum_raw:
-          game.mac_requirements?.minimum || null,
-
-        recommended_raw:
-          game.mac_requirements?.recommended || null,
-
-        minimum:
-          clean(game.mac_requirements?.minimum),
-
-        recommended:
-          clean(game.mac_requirements?.recommended)
-      },
-
-      // REQUISITOS LINUX
-      linux_requirements: {
-
-        minimum_raw:
-          game.linux_requirements?.minimum || null,
-
-        recommended_raw:
-          game.linux_requirements?.recommended || null,
-
-        minimum:
-          clean(game.linux_requirements?.minimum),
-
-        recommended:
-          clean(game.linux_requirements?.recommended)
-      },
-
-      // LEGAL
-      legal_notice:
-        clean(game.legal_notice),
-
-      // NOTAS
-      notes:
-        clean(game.notes),
-
-      // DRM
-      drm_notice:
-        clean(game.drm_notice),
-
-      // AVISOS
-      ext_user_account_notice:
-        clean(game.ext_user_account_notice),
-
       // PACOTES
       packages:
         game.packages || [],
 
       package_groups:
-        game.package_groups || [],
-
-      // CONTENT DESCRIPTORS
-      content_descriptors:
-        game.content_descriptors || null
+        game.package_groups || []
 
     });
 
