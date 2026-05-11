@@ -48,16 +48,25 @@ export default async function handler(req, res) {
       name: game.name,
 
       // DESCRIÇÕES
-      description: game.short_description,
+      description:
+        game.short_description,
 
       short_description:
         game.short_description,
 
+      // TEXTO LIMPO
       detailed_description:
         clean(game.detailed_description),
 
       about_the_game:
         clean(game.about_the_game),
+
+      // HTML ORIGINAL DA STEAM
+      detailed_description_raw:
+        game.detailed_description,
+
+      about_the_game_raw:
+        game.about_the_game,
 
       // IMAGENS
       capsule_image:
